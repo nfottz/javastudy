@@ -41,7 +41,7 @@ public class Ex04_switch {
 	
 	public static void ex02() {
 		
-		int day = 26;
+		int day = 13;
 		
 		String weekName;
 		
