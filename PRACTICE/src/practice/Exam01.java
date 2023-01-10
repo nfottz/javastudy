@@ -32,16 +32,19 @@ public class Exam01 {
 	// 2 x 2 = 4
 	// ...
 	// 5 x 5 = 25
-
+		
 		int k = 5;
 		
-		for(int a = 2; a <= k; a++) {
+		for(int a = 2; a <= 9; a++) {
 			for(int b = 1; b <= 9 ; b++) {
 				System.out.println(a + " x " + b + " = " + (a * b));
-
+				
 				if(a == k && b == k) {
 					break;
+					}	
 				}
+			if(a == k) {
+				break;
 			}
 		}
 	}
