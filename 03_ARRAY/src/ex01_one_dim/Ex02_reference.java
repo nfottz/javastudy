@@ -23,6 +23,9 @@ public class Ex02_reference {
 			System.out.println(b[i]);
 		}
 		
+//		b[0] = 100;
+//		System.out.println(a[0]);	// 100이 나옴 -> 완전히 같은 배열
+		
 	}
 	
 	public static void ex03() {	// 심화
@@ -40,7 +43,7 @@ public class Ex02_reference {
 			b[i] = a[i];
 		}
 		
-		// 기존 배열의 참조값을 신규 배열이 참조값으로 수정
+		// 기존 배열의 참조값을 신규 배열의 참조값으로 수정
 		a = b;
 		
 		// 기존 배열이 신규 배열로 변경되었으므로 확인
