@@ -9,12 +9,12 @@ public class Exam01 {
 		// 예시
 		// 남자입니다.
 		
-		int a = 2442;
+		int a = 6442;
 		
-		while (a < 10) {
+		while (a >= 10) {
 			a = (a / 10);
 		}
-		
+
 		if(a % 2 == 0) {
 			System.out.println("여자입니다.");
 		}
@@ -76,7 +76,7 @@ public class Exam01 {
 	}
 	
 	public static void main(String[] args) {
-		ex03();
+		ex01();
 	}
 
 }

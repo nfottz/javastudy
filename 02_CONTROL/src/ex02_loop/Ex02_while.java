@@ -37,7 +37,7 @@ public class Ex02_while {
 	}
 	
 	public static void main(String[] args) {
-		ex02();
+		ex01();
 	}
 
 }
