@@ -75,8 +75,73 @@ public class Exam01 {
 		
 	}
 	
+	public static void ex() {
+		
+//		for(int a = 1; a <= 100; a++) {
+//			boolean condition1 = (a % 3 == 0);
+//			if(condition1 == true) {
+//				System.out.println(a);
+//			}
+//		}
+		
+		for(int a = 0; a <= 9; a++) {
+			for(int b = 1; b <= 10; b++) {
+				int num = (a * 10) + b;
+				
+				boolean condition1 = (b % 3 == 0);
+				boolean condition2 = ((a % 3) == 0 && a != 0);
+				
+				if(condition1 == true && condition2 == true) {
+					System.out.print("짝짝\t");
+				}
+				else if(condition1 == true || condition2 ==true) {
+					System.out.print("짝\t");
+				}
+//				if(b == 10 && num % 3 == 0) {
+//					System.out.println("짝\t");
+//				}
+				else {
+					System.out.print(num+"\t");
+				}
+			}
+			System.out.println();
+		}
+		
+	}
+
+	public static void ex2() {
+		
+		for(int a = 0; a <= 9; a++) {
+			for(int b = 0; b <= 9; b++) {
+				int num = (a * 10) + (b + 1);
+				
+				boolean condition1 = ((b + 1) % 3 == 0);
+				boolean condition2 = ((a % 3) == 0 && a != 0);
+				
+				if(condition1 == true && condition2 == true) {
+					System.out.print("짝짝\t");
+				}
+				else if(condition1 == true || condition2 == true) {
+					if(b == 9) {
+						System.out.print(num+"\t");
+					}
+					else {
+						System.out.print("짝\t");
+					}
+				}
+				else if(num % 3 == 0 && b == 9) {
+					System.out.print("짝\t");
+				}
+				else {
+					System.out.print(num+"\t");
+				}
+			}
+			System.out.println();
+		}
+
+	}
 	public static void main(String[] args) {
-		ex01();
+		ex2();
 	}
 
 }
