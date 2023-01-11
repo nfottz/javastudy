@@ -22,7 +22,7 @@ public class MainClass {
 		user1.addr.postcode = "12345";
 		user1.addr.roadAddress = "디지털로";
 		user1.addr.jibunAddress = "가산동";
-
+		
 		System.out.println("아이디 : " + user1.id);
 		System.out.println("비밀번호 : " + user1.pw);
 		System.out.println("포인트 : " + user1.point);
