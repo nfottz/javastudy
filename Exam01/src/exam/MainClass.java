@@ -9,7 +9,7 @@ public class MainClass {
 	public static void q1() {
 		int number = 1234567;
 		
-		while(number > 10) {
+		while(number >= 10) {
 			number /= 10;
 		}
 		
@@ -47,16 +47,13 @@ public class MainClass {
 	// 5 x 5 = 25
 	public static void q3() {
 		int k = 5;
-		for(int a = 2; a <= 9; a++) {
+		for(int a = 2; a <= k; a++) {
 			for(int b = 1; b <= 9; b++) {
 				System.out.println(a + " x " + b + " = " + (a * b));
 				
 				if(a == k && b == k) {
 					break;
 				}
-			}
-			if(a == k) {
-				break;
 			}
 		}
 		

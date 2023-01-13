@@ -16,6 +16,20 @@ public class MainClass_ans {
 		}
 		System.out.println(result + "입니다.");
 	}
+	public static void q1_02() {
+		int number = 1234567;
+		String strNumber = number + "";
+		// 문자열로 바꾼다 -> 내부에서 배열처럼 처리됨
+		// {'1', '2', '3', '4', '5', '6', '7'}
+		
+		strNumber.charAt(0);	// '1' = 49(ASCII코드)로 계산됨
+		if(strNumber.charAt(0) % 2 == 1) {
+			System.out.println("남자입니다.");
+		}
+		else {
+			System.out.println("여자입니다.");
+		}
+	}
 	
 	// 문제2. int a와 int b에 저장된 결과를 이용해서 사칙연산 결과를 출력하시오.
 	// 예시
@@ -48,7 +62,21 @@ public class MainClass_ans {
 			}
 		}
 	}
-	
+	public static void q3_02() {
+//		label - 비추하는 방법
+//		outer:	// 바깥 for문 label
+//		for(int a = 2; a <= 9; a++) {
+//			inner:	// 안쪽 for문 label
+//			for(int b = 1; b <= 9; b++) {
+//				System.out.println(a + " x " + b + " = " + (a * b));
+//				
+//				if(a == 5 && b == 5) {
+//					break outer;	// 바깥 for문 끝내기
+//				}
+//			}
+//		}
+	}
+		
 	// 문제4. begin부터 end 사이의 모든 정수들의 평균을 출력하시오.
 	// 단, 항상 begin은 end보다 작거나 같은 상태이다.
 	// 예시
@@ -89,9 +117,9 @@ public class MainClass_ans {
 		int total = 0;
 		int[] arr = {1, -1, -2, 2, 3, -3};
 		for(int i = 0; i < arr.length; i++) {
-			if(arr[i] > 0) {
-				total += arr[i];
-			}
+			if(arr[i] > 0) {			//if(arr[i] < 0) {
+				total += arr[i];		//	continue; }
+			}							// total += arr[i];
 		}
 		System.out.println("합계는 " + total + "입니다.");
 	}
@@ -136,7 +164,22 @@ public class MainClass_ans {
 		}
 		System.out.println(result);
 	}
-	
+	public static void q8_02() {
+		String strScore = "75";
+		int score = Integer.parseInt(strScore);
+		
+		String result = "";
+		switch(score / 10) {
+		case 10:
+		case 9: result += "냄비";
+		case 8: result += "식칼";
+		case 7: result += "도마";
+		case 6: result += "행주";
+		
+		System.out.println(result);
+		}
+	}
+
 	// 문제9. 1 ~ 100 사이의 정수를 대상으로 369 게임 결과를 아래와 같이 출력하시오.
 	// 예시
 	// 1   2   짝   4   5   짝   7   8   짝   10
@@ -150,8 +193,10 @@ public class MainClass_ans {
 		boolean condition1 = false;  // 일의 자리가 3의 배수인가?
 		boolean condition2 = false;  // 십의 자리가 3의 배수인가?
 		for (int n = 1; n <= 100; n++) {
-			condition1 = (n % 10) % 3 == 0 && (n % 10) != 0;
-			condition2 = (n / 10) % 3 == 0 && (n / 10) != 0;
+			int one = n % 10;
+			condition1 = one % 3 == 0 && one != 0;
+			int ten = n / 10;
+			condition2 = ten % 3 == 0 && ten != 0;
 			if (condition1 && condition2) {
 				System.out.print("짝짝\t");
 			} else if (condition1 || condition2) {
@@ -188,10 +233,12 @@ public class MainClass_ans {
 	public static void main(String[] args) {
 		System.out.println("=====문제1=====");
 		q1();
+		q1_02();
 		System.out.println("=====문제2=====");
 		q2();
 		System.out.println("=====문제3=====");
 		q3();
+		q3_02();
 		System.out.println("=====문제4=====");
 		q4();
 		System.out.println("=====문제5=====");
@@ -202,6 +249,7 @@ public class MainClass_ans {
 		q7();
 		System.out.println("=====문제8=====");
 		q8();
+		q8_02();
 		System.out.println("=====문제9=====");
 		q9();
 		System.out.println("=====문제10=====");

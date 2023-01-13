@@ -1,4 +1,4 @@
-package practice;
+package practice01_BankAccount;
 
 public class BankAccount {
 
