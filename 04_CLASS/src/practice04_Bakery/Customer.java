@@ -14,8 +14,7 @@ public class Customer {
 	
 	public Customer(int money) {
 	
-		bakery.sell(money);
-		
+		this.money = money;
 		
 	}
 	
@@ -23,7 +22,7 @@ public class Customer {
 	// 특정 빵집에 얼마의 돈을 지불한다.
 	public void buy(Bakery bakery, int money) {
 		
-		bakery.sell(money);
+		BreadAndChange bac = bakery.sell(money);
 		
 		
 	}
