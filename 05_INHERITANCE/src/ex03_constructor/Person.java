@@ -1,4 +1,4 @@
-package ex03_Constructor;
+package ex03_constructor;
 
 public class Person {
 

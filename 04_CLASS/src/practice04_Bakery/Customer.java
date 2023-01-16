@@ -14,6 +14,9 @@ public class Customer {
 	
 	public Customer(int money) {
 	
+		bakery.sell(money);
+		
+		
 	}
 	
 	// 구매 메소드

@@ -32,6 +32,7 @@ public class Bakery {
 		bakeryMoney += breadPrice * n;
 		
 		BreadAndChange bac = new BreadAndChange(breadCount, change);
+		breadCount = n;
 		
 		return bac;
 	}

@@ -1,4 +1,4 @@
-package ex03_Constructor;
+package ex03_constructor;
 
 /*
  	상속 관계의 생성자
