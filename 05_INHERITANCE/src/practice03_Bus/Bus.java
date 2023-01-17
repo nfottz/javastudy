@@ -10,6 +10,8 @@ public class Bus {
 	
 	// 생성자
 	public Bus(int passengerLimit) {  // new Bus(25)인 경우 25인승 버스를 의미함
+		seats = new Seat[passengerLimit];
+		this.passengerLimit = passengerLimit;
 		
 	}
 	
@@ -20,8 +22,9 @@ public class Bus {
 	
 	// 승차 현황 메소드
 	public void info() {
-		// 1번 좌석 : 홍길동
-		// 2번 좌석 : 비어있음
+
+			// 1번 좌석 : 홍길동
+			// 2번 좌석 : 비어있음
 		// ...
 		
 	}

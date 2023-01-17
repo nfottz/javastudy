@@ -11,6 +11,10 @@ public class Seat {
 	public Seat() {
 		// 하는 일 없음
 	}
+	
+	public Seat(Person person) {
+		
+	}
 
 	// 메소드
 	public Person getPerson() {

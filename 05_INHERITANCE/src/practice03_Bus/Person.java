@@ -8,6 +8,8 @@ public class Person {
 	private String name;
 
 	// 생성자
+	public Person() { }
+	
 	public Person(String name) {
 		this.name = name;
 	}
