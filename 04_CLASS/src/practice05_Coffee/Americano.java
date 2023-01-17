@@ -12,10 +12,15 @@ public class Americano extends Espresso {
 	// 생성자
 	public Americano() { };
 	
-	public Americano(int shoutCount, int extraWater) {
+	public Americano(int shotCount, int extraWater) {
 		
 	}
 	
 	// 조회 info 메소드
-	
+	public void info() {
+		CoffeeBean coffeeBean = new CoffeeBean();
+		System.out.println("커피 원두 원산지 : " + coffeeBean.getOrigin());
+		System.out.println("에스프레소 샷 수 : " + shotCount);
+		System.out.println("물의 양 : " + extraWater);
+	}
 }

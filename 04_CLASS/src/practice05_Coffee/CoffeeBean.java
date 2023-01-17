@@ -8,6 +8,7 @@ public class CoffeeBean {
 	private String origin;  // 커피 원산지 정보
 	
 	// 생성자
+	public CoffeeBean() {}
 	public CoffeeBean(String origin) {
 		this.origin = origin;
 	}
@@ -16,5 +17,14 @@ public class CoffeeBean {
 	public void info() {
 		System.out.println("원산지 : " + origin);
 	}
+
+	public String getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(String origin) {
+		this.origin = origin;
+	}
+	
 	
 }
