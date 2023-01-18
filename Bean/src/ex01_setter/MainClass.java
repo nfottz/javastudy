@@ -12,7 +12,8 @@ public class MainClass {
 		user.setPw("123456");
 		
 		// 필드 값 확인
-		System.out.println(user);
+		System.out.println(user.getId());
+		System.out.println(user.toString());
 		
 	}
 
