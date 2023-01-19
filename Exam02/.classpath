@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/GDJ61/installer/jar/lombok-1.18.24.jar"/>
+	<classpathentry kind="lib" path="/Users/yoobinlee/Desktop/JAVA2023/installer/lombok-1.18.24.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
