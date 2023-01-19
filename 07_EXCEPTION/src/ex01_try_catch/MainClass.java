@@ -1,5 +1,6 @@
 package ex01_try_catch;
 
+import java.io.FileReader;
 import java.util.Scanner;
 
 public class MainClass {
@@ -36,8 +37,7 @@ public class MainClass {
 				iNumbers[i] = Integer.parseInt(numbers[i]);
 				System.out.println(iNumbers[i]);
 			}
-		} catch(NumberFormatException e) {	// Unchecked Exception이므로 
-											// RuntimeException으로도 처리 가능
+		} catch(NumberFormatException e) {	// Unchecked Exception이므로 RuntimeException으로도 처리 가능
 			System.out.println("NumberFormatException 발생");
 		}
 	}
@@ -62,8 +62,18 @@ public class MainClass {
 		}
 	}
 
+	public static void ex04() {
+		
+		try {
+			FileReader fr = new FileReader("simple.txt");
+			fr.close();
+		} catch(Exception e) {
+			System.out.println("예외가 발생하였다.");
+		}
+	}
+	
 	public static void main(String[] args) {
-		ex03();
+		ex04();
 	}
 
 }

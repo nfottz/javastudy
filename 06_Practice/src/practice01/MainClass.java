@@ -15,25 +15,25 @@ public class MainClass {
 		System.out.print("가위바위보 >>> ");
 		Scanner sc = new Scanner(System.in);
 		String strPerson = sc.nextLine();
-		int person = 0;
 		sc.close();
 		
+		int person = 0;
 		for(int i = 0; i < rsp.length; i++) {
-			if(strPerson == rsp[i]) {
+			if(strPerson.equals(rsp[i])) {
 				person = i;
 			}
 		}
-		
+
 		int computer = (int)(Math.random() * 3);
 		String strCom = rsp[computer];
-		
+
 		String result = "";
 		switch(person - computer) {
-		case 0 : result = "비겼습니다.";
+		case 0 : result = "비겼습니다."; break;
 		case 1 : case -2 :
-				 result = "이겼습니다.";
+				 result = "이겼습니다."; break;
 		case 2 : case -1 :
-				 result = "졌습니다.";
+				 result = "졌습니다."; break;
 		}
 
 		System.out.println("당신은 " + strPerson +
@@ -155,7 +155,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex03();
+		ex01();
 	}
 
 }
