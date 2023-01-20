@@ -1,4 +1,4 @@
-package parking;
+package ex05_lombok;
 
 import java.util.Scanner;
 
@@ -16,9 +16,7 @@ public class ParkingLot {
 	}
 	
 	public void addCar() {
-		
 		System.out.println("현재 등록된 차량 : " + idx +"대");
-
 		if(idx == cars.length) {
 			System.out.println("더 이상 차량 등록이 불가능합니다.");
 			return;
@@ -29,17 +27,9 @@ public class ParkingLot {
 		System.out.print("모델명을 입력해주세요. >>> ");
 		String model = sc.next();
 		
-//		for(int i = 0; i < idx; i++) {		
-//			 if(carNo.equals(cars[i].getCarNo())) {
-//				System.out.println("이미 등록된 차량입니다.");
-//				return;
-//			}
-//		}
-		
-			 cars[idx++] = new Car(carNo, model);
-
+		cars[idx++] = new Car(carNo, model);
+				
 		System.out.println("차량번호 " + carNo + " 차량이 등록되었습니다.");
-		
 	}
 	
 	public void deleteCar() {
@@ -49,27 +39,17 @@ public class ParkingLot {
 			return;
 		}
 		
-		System.out.print("차량 번호를 입력해주세요. >>> ");	
+		System.out.print("차량 번호를 입력해주세요. >>> ");
+	
 		String carNo = sc.next();
 		
 		for(int i = 0; i < idx; i++) {		
 			 if(carNo.equals(cars[i].getCarNo())) {
-				 
-				 // 방법1. 삭제할 요소의 뒤에 있는 요소들을 모두 앞으로 한 칸씩 옮기기
-//				 System.arraycopy(cars, (i + 1), cars, i, (idx - 1 - i));
-
-				 // 방법2. 마지막 차량 옮겨오기
-				 cars[i] = cars[--idx];
-				 // cars[i] = cars[idx - 1];
-				 
-				cars[--idx] = null;
-				
+				cars[i] = cars[--idx];
 				System.out.println("차량번호 " + carNo + "차량이 삭제되었습니다.");
 				return;
-				
-				}
 			}
-
+		}
 		System.out.println("대상 차량이 존재하지 않습니다.");
 		
 	}
@@ -81,16 +61,20 @@ public class ParkingLot {
 			return;
 		}
 		
-		System.out.println(name + " 차량 목록");
+		System.out.println("----- " + name + " -----");
 		
 		for(int i = 0; i < idx; i++) {
-			System.out.println(cars[i]);
+			System.out.println("차량번호 : " + cars[i].getCarNo() 
+					+ ", 모델 : " + cars[i].getModel());
 		}
+		
+		System.out.println("총 " + idx + "대의 차량이 주차중입니다.");
 		
 	}
 	
 	public void manage() {
 
+//		loop:
 		while(true) {
 			
 			System.out.print("1. 추가  2. 삭제  3. 전체정보출력  0. 종료 >>>");
@@ -98,13 +82,13 @@ public class ParkingLot {
 			String choice = sc.next();
 			
 			switch(choice) {
-			case "1": addCar(); break;
+			case "1": addCar(); break;		// addCar 호출
 			case "2": deleteCar(); break;
 			case "3": printAllCars(); break;
-			case "0": return;
-
+			case "0": return;					// manage 메소드 종료
+//				break loop;
 			default:
-				System.out.println("존재하지 않는 메뉴입니다.");
+				System.out.print("존재하지 않는 메뉴입니다.");
 				continue;
 			}
 			

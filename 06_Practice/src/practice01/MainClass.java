@@ -1,5 +1,7 @@
 package practice01;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class MainClass {
@@ -205,7 +207,30 @@ public class MainClass {
 	// 예시)
 	// 28살 여자입니다.
 	public static void ex08() {
-		String personalId = "941030-2168619";
+		String personalId = "941030-1168623";
+		int birthYear = Integer.parseInt(personalId.substring(0, 2));
+		int genderNo = Integer.parseInt(personalId.substring(7,1));
+		
+		LocalDateTime now = LocalDateTime.now();
+		int year = now.getYear();
+		int age = 0;
+		String gender = "";
+		
+		if(genderNo == 1 || genderNo == 2) {
+			age = year - (1900 + birthYear) + 1;
+		}
+		
+		if(genderNo == 3 || genderNo == 4) {
+			age = year - (2000 + birthYear) + 1;
+		}
+		
+		if(genderNo % 2 == 0) {
+			gender = "여자";
+		} else {
+			gender = "남자";
+		}
+		
+		System.out.println(age + "살 " + gender +"입니다.");
 		
 	}
 	
@@ -216,7 +241,16 @@ public class MainClass {
 	// 변환 전 파일명 >>> happy.jpg
 	// 변환 후 파일명 = happy_1658792128410.jpg
 	public static void ex09() {
+		System.out.print("파일명을 입력하세요. >>> ");
+		Scanner sc = new Scanner(System.in);
+		String fileName = sc.next();
 		
+		long timestamp = System.currentTimeMillis();
+		int idx = fileName.lastIndexOf(".");
+		String newFileName = fileName.substring(0, idx) + "_" + timestamp + fileName.substring(idx);
+		System.out.println("변환 후 파일명 = " + newFileName);
+		
+		sc.close();
 	}
 	
 	// 문제10. Scanner 클래스의 next() 메소드를 이용해서 사람 이름을 입력 받은 뒤
@@ -229,11 +263,25 @@ public class MainClass {
 	// 이름 입력 >>> 유재석
 	// 처음 뵙겠습니다
 	public static void ex10() {
+		String[] friend = {"감자", "고구마", "당근"};
 		
+		System.out.print("이름을 입력하세요. >>> ");
+		Scanner sc = new Scanner(System.in);
+		String name = sc.next();
+		
+		for(int i = 0; i < friend.length; i++) {
+			if(name.equals(friend[i])) {
+				System.out.println("반갑다 친구야");
+				sc.close();
+				return;
+			}
+		}
+		System.out.println("처음 뵙겠습니다.");
+		sc.close();
 	}
 	
 	public static void main(String[] args) {
-		ex07();
+		ex10();
 	}
 
 }

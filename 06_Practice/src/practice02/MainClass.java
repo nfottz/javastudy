@@ -1,5 +1,9 @@
 package practice02;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Scanner;
+
 public class MainClass {
 
 	// 문제1. 통장(balance)에 최초 5000원이 있다.
@@ -13,6 +17,20 @@ public class MainClass {
 	// 출금 전 18원, 5회 출금액 17원, 출금 후 1원
 	// 출금 전 1원, 6회 출금액 1원, 출금 후 0원
 	public static void ex01() {
+		
+		int balance = 5000;
+		int n = 1;
+
+		while(balance > 0) {			
+			int money = (int)(Math.random() * balance) + 1;
+
+			System.out.println("출금 전 " + balance + "원, " 
+					+ n + "회 출금액 " + money + "원, "
+					+ "출금 후 " + (balance - money) + "원");
+
+			n++;
+			balance -= money;
+		}
 		
 	}
 	
@@ -28,7 +46,29 @@ public class MainClass {
 	// 입력 >>> 4500
 	// 정답. 총 5번만에 성공.
 	public static void ex02() {
+		int answer = (int)(Math.random() * 10000) + 1;
 		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println(answer);
+		int count = 1;
+		while(true) {
+			System.out.print("입력 >>> ");
+			int input = sc.nextInt();
+			
+			if(input == answer) {
+				System.out.println("정답. 총 " + count + "번만에 성공.");
+				return;
+			}
+			
+			if(input > answer) {
+				System.out.println("Down!");
+			} else if(input < answer) {
+				System.out.println("Up!");
+			}
+			count++;
+		}
+	
 	}
 	
 	// 문제3. 자동으로 진행되는 윷 던지기를 구현하시오. 윷이나 모가 나오면 추가로 던지시오.
@@ -39,6 +79,25 @@ public class MainClass {
 	// "윷", "도", 5칸 이동한다.
 	// "모", "윷", "도", 10칸 이동한다.
 	public static void ex03() {
+		
+		String[] stick = {"\"도\"", "\"개\"", "\"걸\"", "\"윷\"", "\"모\""};
+		String result ="";
+		int intResult = 0;
+		
+		while(true) {
+			int idx = (int)(Math.random() * 5);
+			
+			result += stick[idx];
+			intResult += (idx + 1);
+			
+			if(idx <= 2) {
+				break;
+			}
+			
+			result += ", ";
+		}
+		
+		System.out.println(result + ", " + intResult + "칸 이동한다.");
 		
 	}
 	
@@ -57,6 +116,24 @@ public class MainClass {
 	// 9 : ########### 11
 	public static void ex04() {
 		
+		int[] frequency = new int[10];
+		
+		for(int count = 0; count < 100; count++) {
+			
+			int number = (int)(Math.random() * 10);
+			frequency[number]++;
+		}
+		
+		for(int i = 0; i < 10; i++) {
+			
+			String sharp = "";
+			for(int j = 0; j < frequency[i]; j++) {
+				sharp += "#";
+			}
+			
+			System.out.println(i + " : " + sharp + frequency[i]);
+		}
+
 	}
 	
 	// 문제5. 간단한 성적 관리 프로그램을 구현하시오.
@@ -82,6 +159,8 @@ public class MainClass {
 	// 합계 180  183  189  552	
 	public static void ex05() {
 		
+		
+		
 	}
 	
 	// 문제6. 4계절이 저장되어 있는 영한 사전(2차원 배열)을 이용하여 문제를 해결하시오.
@@ -95,7 +174,32 @@ public class MainClass {
 	// 겨울을 영어로 하면? >>> win
 	// 오답
 	public static void ex06() {
+
+		String[][] dic= {{"봄", "여름", "가을", "겨울"},
+						{"spring", "summer", "fall", "winter"}};
 		
+		Scanner sc = new Scanner(System.in);
+		
+//		for(int i = 0; i < dic[0].length; i++) {
+//			System.out.print(dic[0][i] + "을 영어로 하면? >>> ");
+//			String input = sc.next();
+//			
+//			if(input.equals(dic[1][i])) {
+//				System.out.println("정답");
+//			} else {
+//				System.out.println("오답");
+//			}
+//		}
+
+		int random = (int)(Math.random() * 4);
+		System.out.print(dic[0][random] + "을 영어로 하면? >>> ");
+		String input = sc.next();
+		
+		if(input.equals(dic[1][random])) {
+			System.out.println("정답");
+		} else {
+			System.out.println("오답");
+		}
 	}
 	
 	// 문제7. 다음 순서에 따라서 5 x 5 형태의 숫자 빙고판을 자동으로 생성하시오.
@@ -119,6 +223,34 @@ public class MainClass {
 
 	public static void ex07() {
 		
+		int num = 1;
+		int[][] bingo = new int[5][5];
+		
+		for(int i = 0; i < 5; i++) {
+			for(int j = 0; j < 5; j++) {
+				bingo[i][j] = num++;
+			}
+		}
+		
+		for(int i = 0; i < 5; i++) {
+			for(int j = 0; j < 5; j++) {
+
+				int mixI = (int)(Math.random() * 5);
+				int mixJ = (int)(Math.random() * 5);
+				
+				int temp = bingo[i][j];
+				bingo[i][j] = bingo[mixI][mixJ];
+				bingo[mixI][mixJ] = temp;
+			}
+		}
+		
+		for(int i = 0; i < 5; i++) {
+			for(int j = 0; j < 5; j++) {
+				System.out.print(bingo[i][j] + "\t");
+			}
+			System.out.println();
+		}
+		
 	}
 	
 	// 문제8. 대문자와 소문자와 숫자로 구성된 인증번호를 만드시오.
@@ -128,6 +260,28 @@ public class MainClass {
 	// 몇 자리의 인증번호를 생성할까요? >>> 6
 	// 생성된 6자리 인증번호는 Fa013b입니다.
 	public static void ex08() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("몇 자리의 인증번호를 생성할까요? >>> ");
+		int input = sc.nextInt();
+		
+			
+		String code = "";
+		for(int i = 0; i < input; i++) {
+			
+			int random = (int)(Math.random() * 3);		
+
+			String number =(int)(Math.random() * 10) + "";
+			char upper = (char)((int)(Math.random() * 26) + 65);
+			char lower = (char)((int)(Math.random() * 26) + 97);
+			
+			switch(random) {
+			case 0 : code += number; break;
+			case 1 : code += upper; break;
+			case 2 : code += lower; break;
+			}
+		}
+		
+		System.out.println("생성된 " + input + "자리 인증번호는 " + code +"입니다.");
 		
 	}
 	
@@ -155,6 +309,36 @@ public class MainClass {
 	// 입력된 2023-01-19는 목요일입니다.
 	public static void ex09() {
 		
+//		System.out.print("년-월-일 입력 >>> ");
+//		Scanner sc = new Scanner(System.in);
+//		String input = sc.next();
+
+		String input = "2000-03-10";
+		LocalDate date = LocalDate.parse(input);
+
+		int year = date.getYear();
+		int days = 0;
+
+		for(int i = 1; i < year; i++) {
+			if(i % 4 == 0) {
+				if(i % 100 == 0 && i % 400 != 0) {
+					days += 365;
+				} else {
+				days += 366;
+				}
+			} else {
+			days += 365;
+			}
+		}
+		
+		System.out.println(days);
+		
+		 days += date.getDayOfYear();
+		 System.out.println(days);
+		 
+		 String[] weekName = {"일", "월", "화", "수", "목", "금", "토"};
+		 
+		 System.out.println("입력된 " + date + "는 " + weekName[days % 7] +"요일입니다.");
 	}
 	
 	// 문제10. 사용자가 입력한 금액만큼 로또를 구매한다고 가정하고, 완성된 로또 용지를 출력하시오.
@@ -184,10 +368,36 @@ public class MainClass {
 	// ------------------------------
 	public static void ex10() {
 		
+		System.out.print("얼마나 구입하시겠습니까? >>> ");
+		Scanner sc = new Scanner(System.in);
+		
+		int input = sc.nextInt();
+		int amount = input / 1000;
+		sc.close();
+		
+		for(int i = 0; i < amount; i++) {			
+			System.out.print("0" + (i % 5 + 1) + " : ");
+			int[] lotto = new int[6];
+			
+			for(int j = 0; j < 6; j++) {
+				int num = (int)((Math.random() * 45) + 1);
+				
+				
+//				중복 처리...,,,,,ㅠ
+				lotto[j] = num;
+				
+				System.out.printf("%2d", lotto[j]);
+				System.out.print("  ");
+			} System.out.println();
+			if(i % 5 == 4) {
+				System.out.println("------------------------------");
+			}
+		}
+		
 	}
 	
 	public static void main(String[] args) {
-		ex10();
+		ex09();
 	}
 
 }
