@@ -159,7 +159,36 @@ public class MainClass {
 	// 합계 180  183  189  552	
 	public static void ex05() {
 		
+		String[] name = {"정숙", "미희", "상철", "합계"};
+		String[] subject = {"국어", "영어", "수학", "총점"};
 		
+		int[][] score = new int[name.length][subject.length];
+		Scanner sc = new Scanner(System.in);
+		
+		for(int i = 0, length = score.length; i < length - 1; i++) {
+			for(int j = 0, length2 = score[i].length; j < length2 - 1; j++) {
+				System.out.print(name[i] + "의 " + subject[j] + "점수를 입력하세요. >>> ");
+				score[i][j] = sc.nextInt();
+				score[i][subject.length - 1] += score[i][j];
+				score[name.length - 1][j] += score[i][j];
+				score[name.length - 1][subject.length - 1] += score[i][j];
+			}
+		}
+		
+		System.out.println();
+		System.out.print("\t");
+		for(int i = 0, length = subject.length; i < length; i++) {
+			System.out.print(subject[i] + "\t");
+		}
+		
+		System.out.println();
+		for(int i = 0, length = score.length; i < length; i++) {
+			System.out.print(name[i] + "\t");
+			for(int j = 0, length2 = score[i].length; j < length2; j++) {
+				System.out.print(score[i][j] + "\t");
+			}
+			System.out.println();
+		}
 		
 	}
 	
@@ -397,7 +426,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex09();
+		ex05();
 	}
 
 }

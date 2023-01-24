@@ -47,7 +47,7 @@ public class MainClass {
 	// 문제2. 친구 3명을 저장할 수 있는 배열을 생성하고 임의의 값으로 초기화하시오.
 	// 새로 사귄 친구의 수를 입력 받아서 기존 친구들이 저장된 배열의 길이를 새로 사귄 친구의 수만큼 늘리시오.
 	public static void ex02() {
-		String[] friends = {"친구1", "친구2", "친구3"};
+		String[] friends = {"감자", "고구마", "치즈"};
 		
 		System.out.print("새로 사귄 친구의 수를 입력하세요. : ");
 		Scanner sc = new Scanner(System.in);
@@ -75,6 +75,7 @@ public class MainClass {
 		int count = 0;
 		while(true) {
 			String standard = "";
+			System.out.print("문자열을 입력하세요. >>> ");
 			Scanner sc = new Scanner(System.in);
 			
 			standard = sc.next();
@@ -107,7 +108,7 @@ public class MainClass {
 			String user = sc.next();
 	
 			boolean condition = false;
-			for(int i = 0; i < answer.length; i++) {
+			for(int i = 0, length = answer.length; i < length; i++) {
 				condition = user.equals(answer[i]);
 				if(condition == true) {
 					System.out.println("정답입니다.");
@@ -241,7 +242,7 @@ public class MainClass {
 	// 변환 전 파일명 >>> happy.jpg
 	// 변환 후 파일명 = happy_1658792128410.jpg
 	public static void ex09() {
-		System.out.print("파일명을 입력하세요. >>> ");
+		System.out.print("변환 전 파일명 >>> ");
 		Scanner sc = new Scanner(System.in);
 		String fileName = sc.next();
 		
