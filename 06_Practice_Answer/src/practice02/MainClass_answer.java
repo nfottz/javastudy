@@ -384,7 +384,7 @@ public class MainClass_answer {
 	}
 	
 	public static void main(String[] args) {
-		ex10();
+		ex09();
 	}
 
 }
