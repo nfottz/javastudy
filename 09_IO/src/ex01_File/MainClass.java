@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 
 public class MainClass {
 
-	// 임시수정
 	/*
 	  File 클래스
 	  1. java.io 패키지
