@@ -23,7 +23,7 @@ public class MainClass {
 		// File.separator : 플랫폼에 따라서 자동으로 경로 구분자를 사용한다.
 		// 디렉터리 관련 필수 작업
 		
-		File dir = new File("C:"+ File.separator + "sotrage");	// C드라이브 아래 storage 폴더를 의미한다.
+		File dir = new File("C:"+ File.separator + "storage");	// C드라이브 아래 storage 폴더를 의미한다.
 		
 		// 없으면 만들고, 있으면 지운다.
 		if(dir.exists() == false) {

@@ -100,7 +100,6 @@ public class MainClass {
 		book3.put("title", "노인과 바다");
 		book3.put("author", "헤밍웨이");
 		book3.put("price", 15000);
-
 		
 		// 책(book) 3권이 저장된 ArrayList
 		List<Map<String, Object>> books = new ArrayList<Map<String,Object>>();
