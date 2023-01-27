@@ -3,6 +3,7 @@ package ex01_File;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Scanner;
 
 public class MainClass {
 
@@ -101,6 +102,45 @@ public class MainClass {
 				System.out.println(files[i].getName());
 			}
 		}
+		
+	}
+	// 문제5. 예외가 발생한 경우 예외 메시지와 예외 발생시간을 저장한 C:\storage\log.txt
+	// 예시)
+	// 2023-01-26 12:08:30 / by zero
+	public static void ex05() {
+		
+		
+		try {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("첫 번째 정수를 입력하세요. >>> ");
+			int number1 = sc.nextInt();
+			
+			System.out.println("두 번째 정수를 입력하세요. >>> ");
+			int number2 = sc.nextInt();
+			
+			int add = number1 + number2;
+			int sub = number1 - number2;
+			int mul = number1 * number2;
+			int div = number1 / number2;
+			
+			System.out.println(number1 + " + " + number2 + " = " + add);
+			System.out.println(number1 + " - " + number2 + " = " + sub);
+			System.out.println(number1 + " * " + number2 + " = " + mul);
+			System.out.println(number1 + " / " + number2 + " = " + div);
+			
+			sc.close();
+		
+		} catch(Exception e) {
+			
+			File dir = new File("C:" + File.separator + "examStorage");
+			File file = new File(dir, "log.txt");
+			
+		}
+		
+	}
+	
+	// 문제6. C:\examStorage\diary.txt 파일을 C:\diary.txt 파일로 이동하시오.
+	public static void ex06() {
 		
 	}
 	

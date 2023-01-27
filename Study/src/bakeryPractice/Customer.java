@@ -11,8 +11,9 @@ public class Customer {
 	
 	public void buy(Bakery bakery, int money) {
 		this.money -= money;
-		this.breadCount += (int)bakery.getBnc().get("sellBread");
-		this.money += (int)bakery.getBnc().get("change");
+
+		this.breadCount += (int)bakery.sell(money).get("sellBread");
+		this.money += (int)bakery.sell(money).get("change");
 	}
 	
 	public void info() {

@@ -1,7 +1,9 @@
 package practice;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
@@ -109,12 +111,12 @@ public class MainClass {
 		
 		sc.close();
 		
-		File dir = new File("C:" + File.separator + "examStorage");
+		File dir = new File("C:" + File.separator + "storage");
 		if(dir.exists() == false) {
 			dir.mkdirs();
 		}
 		
-		File file = new File(dir, "ex04.txt");
+		File file = new File(dir, "diary.txt");
 		
 		try(PrintWriter out = new PrintWriter(file)){
 			
@@ -156,15 +158,57 @@ public class MainClass {
 		
 		} catch(Exception e) {
 			
-			File dir = new File("C:" + File.separator + "examStorage");
+			File dir = new File("C:" + File.separator + "storage");
 			File file = new File(dir, "log.txt");
 			
 		}
 		
 	}
 	
+	// 문제6. C:\examStorage\diary.txt 파일을 C:\diary.txt 파일로 이동하시오.
+	// 이동에 소요된 시간을 출력하시오.
+	public static void ex06() {
+
+		long nanoTime1 = System.nanoTime();
+		
+		File dir = new File("C:" + File.separator + "storage");
+		File file = new File(dir, "diary.txt");
+
+		StringBuilder sb = new StringBuilder();
+		try(BufferedReader br = new BufferedReader(new FileReader(file))){
+			
+			String line = null;
+			
+			while((line = br.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		File movedDir = new File("C:" + File.separator + "storage2");
+		if(movedDir.exists() == false) {
+			movedDir.mkdirs();
+		}
+		File movedFile = new File(movedDir, "diary.txt");
+		
+		try(PrintWriter out = new PrintWriter(movedFile)){
+			
+			out.println(sb);
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		file.deleteOnExit();
+		
+		long nanoTime2 = System.nanoTime();
+		System.out.println("이동에 소요된 시간 : " + (nanoTime2 - nanoTime1) +" ns");
+	}
+	
 	public static void main(String[] args) {
-		ex05();
+		ex06();
 		
 	}
 	

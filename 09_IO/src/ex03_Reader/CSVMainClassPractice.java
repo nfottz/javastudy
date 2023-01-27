@@ -12,31 +12,8 @@ import java.util.Map;
 public class CSVMainClassPractice {
 
 	public static void main(String[] args) {
+	
 		
-		// C:\storage\product.csv 읽기
-		File file = new File("C:" + File.separator + "storage", "product.csv");
-		
-		try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-			
-			List<Map<String, Object>> products = new ArrayList<Map<String,Object>>();
-			
-			String line = null;
-			
-			while((line = br.readLine()) != null) {
-				String[] items = line.split(",");
-				Map<String, Object> product = new HashMap<String, Object>();
-				product.put("model", items[0]);
-				product.put("maker", items[1]);
-				product.put("price", Integer.parseInt(items[2]));
-				products.add(product);
-				
-			}
-			System.out.println(products);
-			
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
 		
 	}
-	
 }
