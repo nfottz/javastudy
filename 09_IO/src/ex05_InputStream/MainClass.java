@@ -261,7 +261,8 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex05();
+		ex03();
+		ex03_complete();
 	}
 	
 }
