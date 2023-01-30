@@ -65,6 +65,10 @@ public class MainClass {
 		for(int i = 0, length = userList.size(); i < length; i++) {
 			System.out.println(userList.get(i).getId());
 		}
+		
+//		for(User user : userList) {
+//			System.out.println(user.getId());
+//		}
 	}
 	
 	public static void main(String[] args) {
