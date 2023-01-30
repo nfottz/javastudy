@@ -1,11 +1,17 @@
 package practice;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -250,8 +256,115 @@ public class MainClass_ans {
 		} 
 	}
 	
+	// 문제7. System.in은 키보드로부터 바이트 데이터를 입력받는 InputStream이다.
+	// System.in으로부터 문장 1개를 입력받아 출력하시오.
+	// Scanner 대신 BufferedReader를 시용하시오.
+	public static void ex07() {
+		
+		BufferedReader br = null;
+
+		try {
+			
+			br = new BufferedReader(new InputStreamReader(System.in));
+			
+			System.out.print("문장 입력 >>> ");
+			String sentence = br.readLine();
+			System.out.println("입력된 문장 : " + sentence);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(br != null) {
+					br.close();
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	// 문제8. 키보드로부터 하나의 문장을 입력받은 뒤 C:\storage\ex08.txt 파일에 출력하시오.
+	// Scanner와 DataOutputStream을 사용하시오.
+	public static void ex08() {
+		
+		Scanner sc = new Scanner(System.in);
+		DataOutputStream dos = null;
+		
+		try {
+			
+			dos = new DataOutputStream(new FileOutputStream(new File("C:" + File.separator + "storage", "ex08.txt")));
+			
+			System.out.print("문장 입력 >>> ");
+			String sentence = sc.nextLine();
+			
+			dos.writeUTF(sentence);
+			
+			sc.close();
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(dos != null) {
+					dos.close();
+				}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	// 문제9. C:\GDJ61\installer\eclipse-jee-2021-03-R-win32-x86_64.zip 파일을
+	// C:\storage\eclipse.zip으로 복사하시오.
+	public static void ex09() {
+		
+		File file = new File("C:" + File.separator + "GDJ61" + File.separator 
+						+ "installer", "eclipse-jee-2021-03-R-win32-x86_64.zip");
+		File newFile = new File("C:" + File.separator + "storage", "eclipse.zip");
+		
+		BufferedInputStream bin = null;
+		BufferedOutputStream bout = null;
+		
+		try {
+			
+			long startTime = System.currentTimeMillis();
+			
+			bin = new BufferedInputStream(new FileInputStream(file));
+			bout = new BufferedOutputStream(new FileOutputStream(newFile));
+			
+			byte[] b = new byte[1024];	// 1KB(=1,024byte)씩 옮기기
+			int readByte = 0;
+			
+			while((readByte = bin.read(b)) != -1) {
+				bout.write(b, 0, readByte);	// 배열 b의 인덱스 0부터 readByte개 데이터를 사용한다.
+			}
+			
+			long stopTime = System.currentTimeMillis();
+			
+			System.out.println("복사에 걸린 시간 : " + (stopTime - startTime) / 1000 + "s");
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(bout != null) {
+					bout.close();
+				}
+				if(bin != null) {
+					bin.close();
+				}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}	
+	
 	public static void main(String[] args) {
-		ex05_ans();
+		ex08();
 		
 	}
 	
