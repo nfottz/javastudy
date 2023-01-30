@@ -1,5 +1,10 @@
 package projectA;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -113,7 +118,7 @@ public class MainClass {
 		
 	}
 	
-	public static void ex06() {		
+	public static void ex06() {
 		
 		Map<Integer, Car> home1 = new HashMap<Integer, Car>();
 		home1.put(1, new Car("Aa", 1000));
@@ -143,8 +148,109 @@ public class MainClass {
 		
 	}
 	
+	public static void ex07() {
+		
+		Map<String, Object> product1 = new HashMap<String, Object>();
+		product1.put("model", "세탁기");
+		product1.put("maker", "삼성");
+		product1.put("price", 100);
+		
+		Map<String, Object> product2 = new HashMap<String, Object>();
+		product2.put("model", "냉장고");
+		product2.put("maker", "LG");
+		product2.put("price", 200);
+
+		Map<String, Object> product3 = new HashMap<String, Object>();
+		product3.put("model", "TV");
+		product3.put("maker", "삼성");
+		product3.put("price", 300);
+		
+		List<Map<String, Object>> products = Arrays.asList(product1, product2, product3);
+		
+		for(Map<String, Object> product : products) {
+			System.out.println("모델 : " + product.get("model"));
+			System.out.println("제조사 : " + product.get("maker"));
+			System.out.println("가격 : " + product.get("price"));
+		}
+		
+	}
+	
+	public static void ex08() {
+	
+		FileWriter fw = null;
+		FileReader fr = null;
+		
+		try {
+			
+			fw = new FileWriter("sample.txt");
+			fr = new FileReader("sssample.txt");
+			fw.close();
+			fr.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void ex09() throws FileNotFoundException, IOException {
+		
+		BufferedReader br = null;
+		FileWriter fw = new FileWriter("sample.txt");
+		FileReader fr = new FileReader("sample.txt");
+				
+		fr.close();
+		fw.close();
+		
+		if(br == null) {
+			throw new RuntimeException();
+		}
+		
+	}
+	
+	public static void ex10() {
+		
+		FileWriter fw = null;
+		
+		try {
+			
+			fw = new FileWriter("sample.txt");
+			fw.write(1);
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			
+		} finally {
+			
+			try {
+
+					fw.close();
+
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+			
+			System.out.println("ex10 메소드 종료");
+			
+		}
+		
+	}
+	
 	public static void main(String[] args) {
-		ex06();
+		
+//		try {
+//			ex09();
+//		} catch(FileNotFoundException e) {
+//			System.out.println("sample.txt 파일이 없음");
+//		} catch(IOException e) {
+//			System.out.println("sample.txt 파일을 생성할 수 없음");
+//		} catch(RuntimeException e) {
+//			System.out.println("RuntimeException 발생");
+//		}
+		
+		ex10();
 	}
 	
 }
