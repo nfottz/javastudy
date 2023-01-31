@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -326,8 +327,106 @@ public class MainClass {
 		
 	}
 	
+	public static void ex06() {	// 연습 : BufferedReader&Writer
+		
+		// 1시간마다 갱신되는 전국 날씨 정보
+		
+		String apiURL = "http://www.kma.go.kr/XML/weather/sfc_web_map.xml";
+		
+		// storage\sfc_web_map.xml로 다운로드 받기
+		URL url = null;
+		HttpURLConnection con = null;
+		File file = new File("C:" + File.separator + "storage" + File.separator + "sfc_web_map.xml");
+
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+
+		try {
+			
+			url = new URL(apiURL);
+			con = (HttpURLConnection)url.openConnection();
+			int responseCode = con.getResponseCode();
+			
+			if(responseCode == HttpURLConnection.HTTP_OK) {
+				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				String str = "";
+				StringBuilder sb = new StringBuilder();
+				while((str = br.readLine()) != null) {
+					sb.append(str + "\n");
+				}
+				
+				bw = new BufferedWriter(new FileWriter(file));
+				bw.write(sb.toString());
+				
+				System.out.println("다운로드 완료");
+				
+				bw.close();
+				br.close();
+				
+			} else {
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			}
+			
+			
+		} catch(MalformedURLException e) {
+			e.printStackTrace();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void ex06_kk() {	// 연습 : StreamReader/Writer
+		
+		// 1시간마다 갱신되는 전국 날씨 정보
+		
+		String apiURL = "http://www.kma.go.kr/XML/weather/sfc_web_map.xml";
+		
+		// storage\sfc_web_map.xml로 다운로드 받기
+		URL url = null;
+		HttpURLConnection con = null;
+		File file = new File("C:" + File.separator + "storage" + File.separator + "sfc_web_map.xml");
+
+		InputStreamReader isr = null;
+		OutputStreamWriter osw = null;
+
+		try {
+			
+			url = new URL(apiURL);
+			con = (HttpURLConnection)url.openConnection();
+			int responseCode = con.getResponseCode();
+			
+			if(responseCode == HttpURLConnection.HTTP_OK) {
+				isr = new InputStreamReader(con.getInputStream());
+				osw = new OutputStreamWriter(new FileOutputStream(file));
+
+				char[] cbuf = new char[10];
+				int readCount = 0;
+				while((readCount = isr.read()) != -1) {
+					osw.write(cbuf, 0, readCount);
+				}
+								
+				System.out.println("다운로드 완료");
+
+				osw.close();
+				isr.close();
+				
+				
+			} else {
+				isr = new InputStreamReader(con.getErrorStream());
+			}
+			
+			
+		} catch(MalformedURLException e) {
+			e.printStackTrace();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static void main(String[] args) {
-		ex05();
+		ex06();
 	}
 	
 }
