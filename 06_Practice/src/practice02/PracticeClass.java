@@ -1,22 +1,20 @@
 package practice02;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class PracticeClass {
 
 	public static void ex04() {
 		
-		String[] answer = {"서울", "seoul"};
-		String input = "서울";
+		int[] frequency = new int[10];
 		
-		boolean result = false;
-		
-		for(int i = 0; i < answer.length; i++) {
-			result = input.equals(answer[i]);
-			if(result == true) {break;}
+		for(int i = 0; i < 100; i++) {
+			int count = (int)(Math.random() * 10);
+			
 		}
 		
-		System.out.println(result);
 	}
 	
 	public static void random() {
@@ -59,6 +57,6 @@ public class PracticeClass {
 	}
 	
 	public static void main(String[] args) {
-		ex10();
+		ex04();
 	}
 }
