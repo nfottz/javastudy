@@ -57,6 +57,7 @@ public class JSONMainClass_ans {
 			
 			reader.close();
 			con.disconnect();
+			System.out.println(sb.toString());
 			
 			JSONObject obj = new JSONObject(sb.toString());
 			JSONObject body = obj.getJSONObject("response").getJSONObject("body");
