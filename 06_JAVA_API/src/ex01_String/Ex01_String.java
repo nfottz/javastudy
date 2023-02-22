@@ -229,6 +229,7 @@ public class Ex01_String {
 		
 		System.out.println(str.toUpperCase());
 		System.out.println(str.toLowerCase());
+		
 	}
 	
 	public static void trim() {
